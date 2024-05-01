@@ -28,8 +28,7 @@ const Post = ({ post }: { post: PostMetadata }) => {
     {
         src: postCoverImage,
         alt: "Cover",
-        className: "object-cover w-full border border-blog-border h-full rounded-md ",
-        basePath: '/vpantry'
+        className: "object-cover w-full border border-blog-border h-full rounded-md "
     };
 
     return (

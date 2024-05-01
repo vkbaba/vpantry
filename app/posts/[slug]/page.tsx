@@ -33,8 +33,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         } :
         // prod
         {
-            className: 'rounded-md	border border-blog-border mx-auto',
-            basePath: '/vpantry'
+            className: 'rounded-md	border border-blog-border mx-auto'
         };
 
     return (

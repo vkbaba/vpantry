@@ -8,8 +8,8 @@ const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
     output: 'export',
-    basePath: isProd ? `/vpantry` : '',
-    assetPrefix: isProd ? `/vpantry/` : '',
+    basePath: isProd ? '' : '',
+    assetPrefix: isProd ? `/` : '',
     images: {
         loader: "custom",
         imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
