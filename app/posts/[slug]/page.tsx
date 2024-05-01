@@ -34,7 +34,7 @@ export default function Page({ params }: { params: { slug: string } }) {
         // prod
         {
             className: 'rounded-md	border border-blog-border mx-auto',
-            basePath: '/blog-test'
+            basePath: '/vpantry'
         };
 
     return (
