@@ -34,6 +34,7 @@ const nextConfig = {
       },
     webpack: (config, context) => {
         config.plugins.push(
+          // Copy images from posts folder to public folder when building the site
             new CopyPlugin({
               patterns: [
                 {

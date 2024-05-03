@@ -10,7 +10,7 @@ const Header = () => {
           <h1 className="mr-4 text-2xl">virtual pantry</h1>
         </Link>
         <Link href="/">
-          <ExportedImage src={logo} alt="Logo" width={80} height={80} unoptimized={true}/>
+          <img src="/pantry.png" alt="Logo" width={80} height={80} />
         </Link>
       </div>
       <div className="absolute top- right-8 flex space-x-4">
