@@ -20,7 +20,6 @@ export default function Page({ params }: { params: { slug: string } }) {
     const post = getPostContent('./posts/', params.slug)
     // (images/*.png) -> (/slug/images/*.png)
     post.content = post.content.replace(/\(images\/(.*?.(png|jpg|jpeg|gif|svg))\)/g, `(/${params.slug}/images/$1)`);
-
     // Need to set width and height for images in development environment to avoid build errors.
     // It means images may look different in development and production environments.
     // This is a current limitation when using both next-image-export-optimizer and markdown-to-jsx.
@@ -53,12 +52,12 @@ export default function Page({ params }: { params: { slug: string } }) {
                             overrides: {
                                 h1: {
                                     props: {
-                                        className: 'text-4xl font-bold my-6 border-b-2 border-blog-border pb-2',
+                                        className: 'text-3xl font-bold my-8 border-b-2 border-blog-border pb-2',
                                     },
                                 },
                                 h2: {
                                     props: {
-                                        className: 'text-3xl font-bold my-6 border-b-2 border-blog-border  pb-2',
+                                        className: 'text-2xl font-bold my-6 border-b-2 border-blog-border  pb-2',
                                     },
                                 },
                                 h3: {

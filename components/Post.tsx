@@ -15,6 +15,7 @@ type Props = {
 };
 
 const Post = ({ post }: { post: PostMetadata }) => {
+    
     const postCoverImage = `/${post.slug}/images/${post.coverImage}`;
 
     const imgProps = process.env.NODE_ENV === 'development' ?

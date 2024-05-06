@@ -7,16 +7,6 @@ import Path from 'path';
 const isProd = process.env.NODE_ENV === 'production';
 
 const nextConfig = {
-    redirects: async () => {
-        return [
-            {
-                source: '/:year/:month/:slug',
-                destination: '/posts/:slug/',
-                permanent: true,
-            },
-        ];
-    },
-
     output: 'export',
     basePath: isProd ? '' : '',
     assetPrefix: isProd ? `/` : '',
