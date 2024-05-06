@@ -16,7 +16,6 @@ export default function RootLayout({
     <html lang="ja" className={myFont.className}>
       <head>
         <title>Virtual Pantry</title>
-        <link rel="icon" href="/favicon.ico" />
       </head>
       <body className="m-8 ">
         <Header />  

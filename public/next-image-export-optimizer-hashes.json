@@ -62,6 +62,10 @@
     "aws-mfa/images/image-1.png": "JkRPouOoEdymF8TwL07FQOW5n5ICk2h2UgBTikPaGSI=",
     "aws-mfa/images/image-1024x492.png": "MT4UZ1jbO26FCMtdyLwY-N0iYmKCsvB7HgpSJrZRcY4=",
     "aws-mfa/images/image.png": "6kdqR27OVJ4OXzcDycuXX5ELmdMzUnB0cQ0uKVE3oLU=",
+    "blog-migration/images/image-1.png": "U0iTQldt96RzPLM9sfq4KpsChClhWh96QPggUrrsNMk=",
+    "blog-migration/images/image-2.png": "o8fr5nENSYlgxsM0U7416q2DXSL2WMD3E2pLt4uLeZw=",
+    "blog-migration/images/image.png": "K+3m5ht-Gi-SY3LOvaVzgbEhphGqHEs7SI4j2n0bFsk=",
+    "blog-migration/images/image1.png": "+6yOKDuM3cNr-6xQBD+RdDDoWdFvSdurfBTAJ3pyjWs=",
     "chatgpt-troubleshooting/images/image-10.png": "BKX3uuk5CYfbhMsYlWeResBE1IRZyzcws29XRAMfNpU=",
     "chatgpt-troubleshooting/images/image-11.png": "JUgubH6mYI6Lga9ni6rhyhYEJis3YL-7j4AV5sRX0Jk=",
     "chatgpt-troubleshooting/images/image-12.png": "kSP76VElH7bn9ot+UG4s4MiOnLXl5XOnPNSoyYsDakk=",
@@ -686,6 +690,5 @@
     "vsphere-vsan-ha/images/Screenshot_24-1024x558.png": "2SM3+YnQ4NWZMkljrpj64kGnU7chZ9LuOY1FIbcKgss=",
     "vsphere-vsan-ha/images/Screenshot_24.png": "WLqZ9eOXCcaOQgb09DCCldRdt2IwM0hwCzYVOqkO99Y=",
     "win-kubectl/images/kubectl-logo-medium.png": "BP10RkbbeAPvcPpNoGBPywgZl1eehqLVASMSmXP0eeo=",
-    "win-kubectl/images/kubernetes-horizontal-color.png": "6QBITh96kIeJ0trAhwktl6Wfsa7KJylQsqPZ4kdImtw=",
-    "/pantry.0fccc1c4.png": "EfGOe6YuW7YAq8D6o0nPuLdcGq40zBeFPiWt6kw90WM="
+    "win-kubectl/images/kubernetes-horizontal-color.png": "6QBITh96kIeJ0trAhwktl6Wfsa7KJylQsqPZ4kdImtw="
 }
