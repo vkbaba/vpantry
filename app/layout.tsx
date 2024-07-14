@@ -15,7 +15,7 @@ export default function RootLayout({
   return (
     <html lang="ja" className={myFont.className}>
       <head>
-        <title>Virtual Pantry</title>
+        <title>virtual pantry</title>
       </head>
       <body className="m-8 ">
         <Header />  
