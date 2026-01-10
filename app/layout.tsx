@@ -1,9 +1,10 @@
 import "./globals.css";
-import localFont from 'next/font/local'
+import { Zen_Kaku_Gothic_New } from 'next/font/google'
 import Header  from "@/components/Header";
 
-const myFont = localFont({
-  src: './MoralerspaceNeon-Regular.woff2',
+const zenKaku = Zen_Kaku_Gothic_New({
+  weight: ['400', '500', '700'],
+  subsets: ['latin'],
   display: 'swap',
 })
 
@@ -13,7 +14,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="ja" className={myFont.className}>
+    <html lang="ja" className={zenKaku.className}>
       <head>
         <title>virtual pantry</title>
       </head>
