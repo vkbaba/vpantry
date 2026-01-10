@@ -15,11 +15,11 @@ export const generateStaticParams = async () => {
 // export async function generateMetadata({ params, searchParams }) {
 // }
 
-export default function Page({ params }: { params: { slug: string } }) {
-
-    const post = getPostContent('./posts/', params.slug)
+export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
+    const { slug } = await params
+    const post = getPostContent('./posts/', slug)
     // (images/*.png) -> (/slug/images/*.png)
-    post.content = post.content.replace(/\(images\/(.*?.(png|jpg|jpeg|gif|svg))\)/g, `(/${params.slug}/images/$1)`);
+    post.content = post.content.replace(/\(images\/(.*?.(png|jpg|jpeg|gif|svg))\)/g, `(/${slug}/images/$1)`);
     // Need to set width and height for images in development environment to avoid build errors.
     // It means images may look different in development and production environments.
     // This is a current limitation when using both next-image-export-optimizer and markdown-to-jsx.
