@@ -1,10 +1,44 @@
 
 import { getPostsMetadata, getPostContent } from "@/utils/getPosts"
 import Markdown from "markdown-to-jsx"
-import React from 'react'
+import React, { isValidElement, ReactNode } from 'react'
 import ExportedImage from "next-image-export-optimizer";
 import Code from "@/components/Code"
 import Link from 'next/link';
+import LinkCard from "@/components/LinkCard";
+import { OgpData } from "@/utils/ogp";
+
+function getChildrenText(children: ReactNode): string {
+    if (typeof children === 'string') return children;
+    if (Array.isArray(children)) return children.map(getChildrenText).join('');
+    if (isValidElement<{ children?: ReactNode }>(children)) {
+        return getChildrenText(children.props.children);
+    }
+    return '';
+}
+
+function createSmartLink(ogpData: Record<string, OgpData>) {
+    return function SmartLink({ children, href, ...props }: { children: React.ReactNode; href?: string; [key: string]: unknown }) {
+        const childText = getChildrenText(children);
+
+        // URLのみの行かどうかを判定（childrenがhrefと同じ場合）
+        if (href && childText === href && ogpData[href]) {
+            return <LinkCard ogp={ogpData[href]} />;
+        }
+
+        return (
+            <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-cyan-600 underline visited:text-indigo-800"
+                {...props}
+            >
+                {children}
+            </a>
+        );
+    };
+}
 
 // Set dynamic routes
 export const generateStaticParams = async () => {
@@ -17,7 +51,7 @@ export const generateStaticParams = async () => {
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
-    const post = getPostContent('./posts/', slug)
+    const post = await getPostContent('./posts/', slug)
     // (images/*.png) -> (/slug/images/*.png)
     post.content = post.content.replace(/\(images\/(.*?.(png|jpg|jpeg|gif|svg))\)/g, `(/${slug}/images/$1)`);
     // Need to set width and height for images in development environment to avoid build errors.
@@ -86,11 +120,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                     },
                                 },
                                 a: {
-                                    props: {
-                                        target: '_blank',
-                                        rel: 'noopener noreferrer',
-                                        className: 'text-cyan-600 underline visited:text-indigo-800 	',
-                                    },
+                                    component: createSmartLink(post.ogpData),
                                 },
                                 img: {
                                     component: ExportedImage,

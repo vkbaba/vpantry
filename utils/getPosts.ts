@@ -1,6 +1,7 @@
 import fs from 'fs';
 import matter from 'gray-matter';
 import path from 'path';
+import { fetchOgp, extractUrlOnlyLinks, OgpData } from './ogp';
 
 interface PostMetadata {
     title: string;
@@ -50,11 +51,15 @@ export function getPostsMetadata(basePath: string): PostMetadata[] {
     return posts;
 }
 
-export function getPostContent(basePath: string, slug: string): matter.GrayMatterFile<string> {
+export interface PostContentWithOgp extends matter.GrayMatterFile<string> {
+    ogpData: Record<string, OgpData>;
+}
+
+export async function getPostContent(basePath: string, slug: string): Promise<PostContentWithOgp> {
 
     const markdownFiles = getAllFiles(basePath).filter(file => file.endsWith('.md'));
     const file = markdownFiles.filter(file => file.includes(slug));
-    if (!file) {        
+    if (!file) {
         throw new Error(`File not found: ${slug}`);
     } else if (file.length > 1) {
         throw new Error(`Multiple files found: ${slug}`);
@@ -62,8 +67,22 @@ export function getPostContent(basePath: string, slug: string): matter.GrayMatte
 
     const content = fs.readFileSync(file[0], 'utf8');
 
-    const matterResult = matter(content)
-    return matterResult
+    const matterResult = matter(content);
+
+    // URLのみの行を抽出してOGPデータを取得
+    const urls = extractUrlOnlyLinks(matterResult.content);
+    const ogpData: Record<string, OgpData> = {};
+
+    await Promise.all(
+        urls.map(async (url) => {
+            const ogp = await fetchOgp(url);
+            if (ogp) {
+                ogpData[url] = ogp;
+            }
+        })
+    );
+
+    return { ...matterResult, ogpData };
 }
 
 
