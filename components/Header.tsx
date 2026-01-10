@@ -13,10 +13,6 @@ const Header = () => {
           <img src="/pantry.png" alt="Logo" width={80} height={80} />
         </Link>
       </div>
-      <div className="absolute top- right-8 flex space-x-4">
-        <Link href="/">Home</Link>
-        <Link href="/about">About</Link>
-      </div>
     </header>
   );
 };
