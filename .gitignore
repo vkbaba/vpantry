@@ -37,3 +37,7 @@ next-env.d.ts
 
 # next-image-export-optimizer
 public/next-image-export-optimizer-hashes.json
+
+# claude code metrics
+.claude/metrics.log
+.claude/.metrics-state.json

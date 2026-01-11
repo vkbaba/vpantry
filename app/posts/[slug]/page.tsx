@@ -2,8 +2,8 @@
 import { getPostsMetadata, getPostContent } from "@/utils/getPosts"
 import Markdown from "markdown-to-jsx"
 import React, { isValidElement, ReactNode } from 'react'
-import ExportedImage from "next-image-export-optimizer";
 import Code from "@/components/Code"
+import ImageModal from "@/components/ImageModal"
 import Link from 'next/link';
 import LinkCard from "@/components/LinkCard";
 import { OgpData } from "@/utils/ogp";
@@ -101,7 +101,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                 },
                                 p: {
                                     props: {
-                                        className: 'text-lg	my-6',
+                                        className: 'text-xl	my-6',
                                     },
                                 },
                                 ul: {
@@ -116,14 +116,14 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                 },
                                 li: {
                                     props: {
-                                        className: 'list-inside ml-6 text-lg',
+                                        className: 'list-inside ml-6 text-xl',
                                     },
                                 },
                                 a: {
                                     component: createSmartLink(post.ogpData),
                                 },
                                 img: {
-                                    component: ExportedImage,
+                                    component: ImageModal,
                                     props: imgProps,
                                 },
                                 figcaption: {
@@ -133,7 +133,7 @@ export default async function Page({ params }: { params: Promise<{ slug: string 
                                 },
                                 blockquote: {
                                     props: {
-                                        className: 'border-l-2 border-blog-text pl-6 ml-6 my-6 [&>p]:my-2 [&>p]:text-base',
+                                        className: 'border-l-2 border-blog-text pl-6 ml-6 my-6 [&>p]:my-2 [&>p]:text-lg',
                                     },
                                 },
                                 code: {
