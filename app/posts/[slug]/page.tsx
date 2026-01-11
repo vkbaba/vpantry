@@ -7,6 +7,7 @@ import ImageModal from "@/components/ImageModal"
 import Link from 'next/link';
 import LinkCard from "@/components/LinkCard";
 import { OgpData } from "@/utils/ogp";
+import type { Metadata } from 'next'
 
 function getChildrenText(children: ReactNode): string {
     if (typeof children === 'string') return children;
@@ -46,8 +47,18 @@ export const generateStaticParams = async () => {
     return posts.map((post: { slug: string }) => ({ slug: post.slug }))
 }
 
-// export async function generateMetadata({ params, searchParams }) {
-// }
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+    const { slug } = await params
+    const post = await getPostContent('./posts/', slug)
+
+    return {
+        title: post.data.title,
+        openGraph: {
+            title: post.data.title,
+            images: post.data.coverImage ? [`/${slug}/images/${post.data.coverImage}`] : [],
+        },
+    }
+}
 
 export default async function Page({ params }: { params: Promise<{ slug: string }> }) {
     const { slug } = await params
